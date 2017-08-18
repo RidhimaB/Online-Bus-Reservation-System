@@ -1,0 +1,51 @@
+Steps :
+--------
+1. Run SQL Command line
+2. Connect  system/manager
+3. Drop user scott cascade;
+4. Create user scott identified by tiger;
+5. Grant connect, resource to scott;
+6. connect scott/tiger
+
+7. Copy and paste the following content
+--------------------------------------------------------
+
+Create table registration ( 
+	username varchar2(12), 
+	password varchar2(12), 
+	mobile varchar2(12), 
+	email varchar2(25),
+	primary key(username)
+);
+
+Create table busdetails (
+	source varchar2(12),
+	destination varchar2(12),
+	fare number(4),
+	timings varchar2(12)
+);
+
+insert into busdetails values('montgomery','troy',300,'9:00 AM');
+insert into busdetails values('montgomery','dothan',300,'11:00 AM');
+insert into busdetails values('troy','montgomery',300,'3:00 PM');
+insert into busdetails values('troy','dothan',300,'4:00 PM');
+insert into busdetails values('dothan','montgomery',300,'10:00 AM');
+insert into busdetails values('dothan','troy',300,'01:00 PM');
+
+Create table availabilitydetails(
+	doj Date,
+	source varchar2(12),
+	destination varchar2(12),
+	seats number(3),
+	primary key(doj,source,destination)
+);
+
+create table reservationdetails(
+	username varchar2(12),
+	source varchar2(12),
+	destination varchar2(12),
+	doj Date,
+	seatnum varchar2(4),
+	status varchar2(10),
+	primary key(username,source,destination,doj,status)
+);
